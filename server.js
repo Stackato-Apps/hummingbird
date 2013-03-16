@@ -5,13 +5,13 @@ var tracker = require('./lib/tracker');
 var demo = require('./lib/demo');
 
 
-dashboard.listen(config.dashboard_port, config.dashboard_address);
-console.log("Dashboard listening on http://" + (config.dashboard_address || '*') + ":" + config.dashboard_port + ".");
+dashboard.listen((process.env.PORT || config.dashboard_port), config.dashboard_address);
+console.log("Dashboard listening on http://" + (config.dashboard_address || '*') + ":" + (process.env.PORT || config.dashboard_port) + ".");
 
 
 // Tracker should listen on the same port as the dashboard
 tracker.listen(dashboard);
-console.log("Tracker listening on http://" + (config.dashboard_address || '*') + ":" + config.dashboard_port + "/tracking_pixel.gif.");
+console.log("Tracker listening on http://" + (config.dashboard_address || '*') + ":" + (process.env.PORT || config.dashboard_port) + "/tracking_pixel.gif.");
 
 
 // If you want to have the tracking pixel listen on a different port

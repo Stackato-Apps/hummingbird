@@ -1,0 +1,8 @@
+name: hummingbird
+
+mem: 256M
+
+requirements:
+  ubuntu:
+    - libgeoip1
+    - libgeoip-dev
